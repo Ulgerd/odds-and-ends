@@ -1,6 +1,7 @@
 class StatefulEmitter {
-	constructor(counter) {
-		this.state = counter;
+	constructor(obj) {
+		this.state = {};
+		this.state.counter = obj.counter;
 		this.funcs = [];
 	};
 
