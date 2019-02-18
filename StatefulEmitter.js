@@ -14,7 +14,7 @@ class StatefulEmitter {
 	};
 
   	setState(data) {
-		this.state = (data.constructor === Object) ? data : data(this.state);
+		this.state = (data.constructor === Object) ? {...data} : data(this.state);
   		this.printResult();
 	};
 
