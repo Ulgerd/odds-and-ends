@@ -6,7 +6,7 @@ class StatefulEmitter {
 
 	subscribe(fn) {
 		this.funcs.push(fn);
-		this.printResult();
+		this.activateFunction();
 
 		return () => {
 			this.funcs = this.funcs.filter(eventFn => fn !== eventFn);
@@ -15,10 +15,10 @@ class StatefulEmitter {
 
   	setState(data) {
 		this.state = (data.constructor === Object) ? {...data} : data(this.state);
-  		this.printResult();
+  		this.activateFunction();
 	};
 
-	printResult() {
+	activateFunction() {
 		return this.funcs.forEach(fn => {
 			fn.call(null, this.state.counter);
 		})
